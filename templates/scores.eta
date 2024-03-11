@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Votes!</title>
+  </head>
+  <body>
+    <h>Votes: <h id="count"></h></h>
+    <ul>
+        <li>Waterloo votes: <h id="waterloo"></h></li>
+        <li>10 Years votes: <h id="10_years"></h></li>
+        <li>Molitva votes: <h id="molitva"></h></li>
+        <li>Lautar votes: <h id="lautar"></h></li>
+        <li>Dancing Lasha tumbai votes: <h id="dancing_lasha"></h></li>
+        <li>Fairytail votes: <h id="fairytail"></h></li>
+        <li>Rise Like a Phoenix votes: <h id="rise_phoenix"></h></li>
+        <li>Cha Cha Cha votes: <h id="cha_cha_cha"></h></li>
+    </ul>
+    <script>
+      var votes = {};
+      get_votes = async function get_votes(){           //Make a fetch request to the back end to get current votes
+        const url = window.location.search + "/votes";
+        await fetch(url)                                //Takes the response, changes it to a dictionary and adds it to votes
+          .then(body => body.json())
+          .then(data => votes=data);
+
+        Object.entries(votes).forEach(([k,v]) => {      //Loop through all votes and change the label to match the value
+            document.getElementById(k).innerHTML = v;
+        });
+      };
+    get_votes();
+
+    setInterval(get_votes);                             //Excutes get_votes again and again to keep it up to date
+    </script>
+  </body>
+</html>

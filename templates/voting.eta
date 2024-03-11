@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Voting!</title>
+  </head>
+  <body>
+    <h1>VOTING</h1>
+    
+    <li>Waterloo votes: <h class="vote" id="waterloo">1</h></li>
+    <li>10 Years votes: <h class="vote" id="10_years">2</h></li>
+    <li>Molitva votes: <h class="vote" id="molitva">3</h></li>
+    <li>Lautar votes: <h class="vote" id="lautar">4</h></li>
+    <li>Dancing Lasha tumbai votes: <h class="vote" id="dancing_lasha">5</h></li>
+    <li>Fairytail votes: <h class="vote" id="fairytail">6</h></li>
+    <li>Rise Like a Phoenix votes: <h class="vote" id="rise_phoenix">7</h></li>
+    <li>Cha Cha Cha votes: <h class="vote" id="cha_cha_cha">8</h></li>
+    
+    <script>
+        async function send_votes() {                               //Makes a HTTP Post request to add the choosen amount of votes to the total
+                                                                    //Makes a dict of them with their id being key and innerHTML in int as value, this dict will then be sent to the backend 
+            var voteElements = document.getElementsByClassName("vote");
+            var votes = {};
+            for (let element of voteElements) {
+              votes[element.id] = parseInt(element.innerHTML);
+            }
+            
+            const url = window.location.search + "/vote";
+            await fetch(url,{
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(votes)
+            });
+        }
+        send_votes()
+    
+    </script>
+  </body>
+</html>
