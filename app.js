@@ -13,7 +13,7 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 const app = new Hono();
 
 
-const id = (Math.random()*4294967296)>>>0;;
+var id = (Math.random()*4294967296)>>>0;
 
 var votes = {"waterloo": 0,
         "10_years": 0,
@@ -60,6 +60,20 @@ app.get("/votes", (c) => {                                                      
     dir["count"] = get_all_votes();
     return c.json(dir);
 });
+
+
+app.on("RESET", "/", (c) => {
+    id = (Math.random()*4294967296)>>>0;
+    votes = {"waterloo": 0,
+        "10_years": 0,
+        "molitva": 0,
+        "lautar": 0,
+        "dancing_lasha": 0,
+        "fairytail": 0,
+        "rise_phoenix": 0,
+        "cha_cha_cha": 0};
+});
+
 //To make it possible to read external scripts
 app.get("/script/:path", async (c) => {
     const text = await Deno.readTextFile("./script/"+c.req.param("path"));
