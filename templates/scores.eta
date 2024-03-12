@@ -2,8 +2,16 @@
 <html>
   <head>
     <title>Votes!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    
   </head>
   <body>
+    <div class="container" style="width:95%">
+      <div class="row">
+
+      
+      </div>
+    </div>
     <h>Votes: <h id="count"></h></h>
     <ul>
         <li>Waterloo votes: <h id="waterloo"></h></li>
@@ -15,6 +23,8 @@
         <li>Rise Like a Phoenix votes: <h id="rise_phoenix"></h></li>
         <li>Cha Cha Cha votes: <h id="cha_cha_cha"></h></li>
     </ul>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="/script/get_votes.js"></script>
   </body>
 </html>

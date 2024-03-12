@@ -2,9 +2,111 @@
 <html>
   <head>
     <title>Voting!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    
   </head>
   <body>
-    <h1>VOTING</h1>
+
+    <div class="container" style="width:95%">
+      <div class="row">
+        <h1>VOTING</h1>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <p>1. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_1">
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <p>2. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_2">
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <p>3. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_3">
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <p>4. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_4">
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col s2">
+          <p>5. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_5">
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s2">
+          <p>6. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_6">
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col s2">
+          <p>7. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_7">
+            
+          </select>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col s2">
+          <p>8. Choice</p>
+        </div>
+        <div class="input-field col push-s2">
+          <select class="icons" id="choice_8">
+            
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+          <a class="waves-effect waves-light btn-large" id="send">SEND VOTES</a>
+        </div>
+      </div>
+
+    </div>
+
+
+    <!-- h1>VOTING</h1>
     
     <li>Waterloo votes: <h class="vote" id="waterloo">1</h></li>
     <li>10 Years votes: <h class="vote" id="10_years">2</h></li>
@@ -13,10 +115,25 @@
     <li>Dancing Lasha tumbai votes: <h class="vote" id="dancing_lasha">5</h></li>
     <li>Fairytail votes: <h class="vote" id="fairytail">6</h></li>
     <li>Rise Like a Phoenix votes: <h class="vote" id="rise_phoenix">7</h></li>
-    <li>Cha Cha Cha votes: <h class="vote" id="cha_cha_cha">8</h></li>
+    <li>Cha Cha Cha votes: <h class="vote" id="cha_cha_cha">8</h></li -->
+    
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src= "script/send_votes.js"></script>
     <script>
-        send_votes()
+        //Dropdown
+        $('select').formSelect();
+
+        createAllSelects();
+
+        // TODO: create function for when some select changes --> other selects needs to be updated
+
+
+        // TODO: rewrite the sending of votes when button is clicked
+        $('#save_btn').click(function(){ 
+          send_votes();
+        });
     </script>
   </body>
 </html>
