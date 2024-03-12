@@ -13,7 +13,7 @@ var selected_el = {
 };
 
 
-// Create the voting select elements
+// TODO: Create the voting select elements --> does not work at the moment...
 function createSelect(id){
     var select = document.getElementById(id);
 
@@ -26,7 +26,8 @@ function createSelect(id){
     var option = document.createElement("option");
     option.setAttribute("value", "undecided");
     option.innerHTML = "undecided";
-    select.appendChild(option);
+    // select.appendChild(option);
+
     var images = ["sweden.png", "iceland.png", "serbia.jpg", "moldova.png",
         "ukraine.png", "norway.png", "austria.png", "finland.png"];
     var option_values = ["waterloo", "10_years", "molitva", "lautar", 
@@ -36,10 +37,13 @@ function createSelect(id){
 
     for(var i = 0; i < option_values.length; i++){
         if (selected_el[option_values[i]] == 0){
+            console.log(option_values[i])
             var option = document.createElement("option");
-            option.setAttribute("value", option_values[i]);
-            option.innerHTML = option_texts[i];
-            option.setAttribute("data-icon", "images/"+ images[i]);
+            option.value = option_values[i];
+            option.text = option_texts[i];
+            // option.setAttribute("value", option_values[i]);
+            // option.innerHTML = option_texts[i];
+            option.setAttribute("data-img-src", "images/"+ images[i]);
             select.appendChild(option);
         } else if (selected_el[option_values[i]] == i + 1){
             var option = document.createElement("option");
