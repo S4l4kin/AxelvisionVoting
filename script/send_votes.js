@@ -1,3 +1,5 @@
+
+//TODO: rewrite 
 async function send_votes() {                               //Makes a HTTP Post request to add the choosen amount of votes to the total
                                                             //Makes a dict of them with their id being key and innerHTML in int as value, this dict will then be sent to the backend 
 var voteElements = document.getElementsByClassName("vote");
