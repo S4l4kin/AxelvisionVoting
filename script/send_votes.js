@@ -14,5 +14,8 @@ await fetch(url,{
         'Content-Type': 'application/json'
         },
         body: JSON.stringify(votes)
+    }).then(body => body.text())
+    .then(data => {
+        return data;
     });
 }

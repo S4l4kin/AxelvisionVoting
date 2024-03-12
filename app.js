@@ -75,7 +75,8 @@ app.on("RESET", "/", (c) => {
 });
 
 //To make it possible to read external scripts
-app.get("/script/:path", async (c) => {
+app.get("/script/:path{.+\\.js$}", async (c) => {
+    console.log("testata: " + c.req.param("path"));
     const text = await Deno.readTextFile("./script/"+c.req.param("path"));
     return c.text(text);
 })
