@@ -60,6 +60,10 @@ app.get("/votes", (c) => {                                                      
     dir["count"] = get_all_votes();
     return c.json(dir);
 });
+//To make it possible to read external scripts
+app.get("/script/:path", async (c) => {
+    const text = await Deno.readTextFile("./script/"+c.req.param("path"));
+    return c.text(text);
+})
 
-
-Deno.serve(app.fetch);
+export default app;
