@@ -12,7 +12,6 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 
 const app = new Hono();
 
-
 var id = (Math.random()*4294967296)>>>0;
 
 var votes = {"waterloo": 0,
@@ -61,6 +60,10 @@ app.get("/votes", (c) => {                                                      
     return c.json(dir);
 });
 
+app.put("/", async (c) => {
+    const socket = await c.upgrade();
+    connections.push(socket);
+});
 
 app.on("RESET", "/", (c) => {
     id = (Math.random()*4294967296)>>>0;

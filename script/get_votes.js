@@ -11,4 +11,4 @@ Object.entries(votes).forEach(([k,v]) => {      //Loop through all votes and cha
 };
 get_votes();
 
-setInterval(get_votes);                             //Excutes get_votes again and again to keep it up to date
+setInterval(get_votes, 5000);                             //Excutes get_votes again and again to keep it up to date
