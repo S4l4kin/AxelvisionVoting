@@ -16,7 +16,7 @@
         <div class="col s2">
           <p>1. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_1">
           </select>
         </div>
@@ -26,7 +26,7 @@
         <div class="col s2">
           <p>2. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_2">
           </select>
         </div>
@@ -36,7 +36,7 @@
         <div class="col s2">
           <p>3. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_3">
           </select>
         </div>
@@ -46,7 +46,7 @@
         <div class="col s2">
           <p>4. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_4">
           </select>
         </div>
@@ -57,7 +57,7 @@
         <div class="col s2">
           <p>5. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_5">
           </select>
         </div>
@@ -67,7 +67,7 @@
         <div class="col s2">
           <p>6. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_6">
           </select>
         </div>
@@ -78,7 +78,7 @@
         <div class="col s2">
           <p>7. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_7">
             
           </select>
@@ -90,7 +90,7 @@
         <div class="col s2">
           <p>8. Choice</p>
         </div>
-        <div class="input-field col push-s2">
+        <div class="input-field col push-s1 s8">
           <select class="icons" id="choice_8">
             
           </select>
