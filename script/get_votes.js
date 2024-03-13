@@ -6,8 +6,9 @@ await fetch(url)                                //Takes the response, changes it
     .then(data => votes=data);
 
 Object.entries(votes).forEach(([k,v]) => {      //Loop through all votes and change the label to match the value
-    document.getElementById(k).innerHTML = v;
+    document.getElementById(k).innerHTML = v.value;
 });
+
 };
 get_votes();
 

@@ -33,7 +33,8 @@ async function send(votes){
         body: JSON.stringify(votes)
     }).then(body => body.text())
     .then(data => {
-        console.log(data)
+        //console.log(data)
+        M.toast({html: data});
         return data;
     });
 }

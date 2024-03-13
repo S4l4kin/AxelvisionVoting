@@ -14,6 +14,10 @@ const app = new Hono();
 
 var id = (Math.random()*4294967296)>>>0;
 
+function compareScore(a, b) {
+    return b.value - a.value;
+}
+
 var votes = {"waterloo": 0,
         "10_years": 0,
         "molitva": 0,
@@ -35,9 +39,10 @@ function get_all_votes () {
 app.post("/vote", async (c) => {
 
     const votedCookie = getCookie(c,"voted");
-    if (votedCookie == id)                          //Each device can only vote once
+    if (votedCookie == id) {                          //Each device can only vote once
         console.log("please vote only once");
-        //return c.text("You can only vote once");
+        return c.text("You can only vote once");
+    }
     setCookie(c, 'voted', id);
 
 
@@ -71,16 +76,21 @@ app.get("/", async (c) => c.html(await readPage("./scores.html"))); //The main s
 app.get("/voting", async (c) => c.html(await readPage("./voting.html")));                                     //The voting view
 
 app.get("/votes", (c) => {                                                                 //Used to send how many votes each song has
-    var dir = {...votes};
-    dir["count"] = get_all_votes();
+    var dir = {};
+    var positions = [];
+    Object.entries(votes).forEach(([k,v]) => {
+        positions.push({"name":k,"value":v});
+    });
+    positions.sort(compareScore);
+
+    var position = 1;
+    positions.forEach(element =>{
+        dir[element.name] = {"value":element.value, "position": position};
+        position++;
+    })
+
+    dir["count"] = {"value": get_all_votes()};
     return c.json(dir);
-});
-
-
-
-app.put("/", async (c) => {
-    const socket = await c.upgrade();
-    connections.push(socket);
 });
 
 app.on("RESET", "/", (c) => {
