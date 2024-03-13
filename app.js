@@ -42,10 +42,17 @@ app.post("/vote", async (c) => {
 
 
     const body = await c.req.json();
-    
+    var max = "";
+    var maxV = 0;
     Object.entries(body).forEach(([k,v]) => {
         votes[k] += v;
+        if(votes[k] >= maxV && k != "waterloo"){
+            maxV = votes[k];
+            max = k;
+        }
     })
+
+    votes["waterloo"] = Math.min(votes["waterloo"],maxV-1);
 
     return c.text("Thank you for voting!");
 });
