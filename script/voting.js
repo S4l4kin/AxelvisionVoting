@@ -66,6 +66,7 @@ function send_votes(){
         }
         
     }
-    send(votes);
+    answer = send(votes);
+    M.toast({html: answer})
 }
 
