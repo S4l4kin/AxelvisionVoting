@@ -1,19 +1,88 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Votes!</title>
+    <title>Scores!</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     
   </head>
   <body>
-    <div class="container" style="width:95%">
+    <div class="container" style="width:90%">
       <div class="row">
-
-      
+        <h1>Results</h1>
       </div>
+      <div class="row">
+        <h>Number of total votes: <h id="count"></h></h>
+      </div>
+      <div class="row">
+        <table class="striped">
+          <thead>
+            <tr>
+                <th>Country</th>
+                <th>Song</th>
+                <th>Singer</th>
+                <th>Votes</th>
+            </tr>
+          </thead>
+  
+          <tbody>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/sweden.png" alt="Sweden"></td>
+              <td><p>Waterloo</p></td>
+              <td><p>Kalevalina & Lucia</p></td>
+              <td><p id="waterloo_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/iceland.png" alt="Iceland"></td>
+              <td><p>10 Years</p></td>
+              <td><p>Freddy</p></td>
+              <td><p id="10_years_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/serbia.png" alt="Serbia"></td>
+              <td><p>Molitva</p></td>
+              <td><p>Dancing Queen</p></td>
+              <td><p id="molitva_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/moldova.png" alt="Moldova"></td>
+              <td><p>Lautar</p></td>
+              <td><p>Verdandi</p></td>
+              <td><p id="lautar_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/ukraine.png" alt="Ukraine"></td>
+              <td><p>Dancing Lasha Tumbai</p></td>
+              <td><p>Mörlyn</p></td>
+              <td><p id="dancing_lasha_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/norway.png" alt="Norway"></td>
+              <td><p>Fairytail</p></td>
+              <td><p>Lejdi Gaga</p></td>
+              <td><p id="fairytail_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/austria.png" alt="Austria"></td>
+              <td><p>Rise Like a Phoenix</p></td>
+              <td><p>pHabbe</p></td>
+              <td><p id="rise_phoenix_votes"></p></td>
+            </tr>
+            <tr>
+              <td style="width: 100px;"><img class="responsive-img" src="images/finland.png" alt="Finland"></td>
+              <td><p>Cha Cha Cha</p></td>
+              <td><p>[Chà Chà]</p></td>
+              <td><p id="cha_cha_cha_votes"></p></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
     </div>
-    <h>Votes: <h id="count"></h></h>
-    <ul>
+
+
+
+    
+    <!--ul>
         <li>Waterloo votes: <h id="waterloo"></h></li>
         <li>10 Years votes: <h id="10_years"></h></li>
         <li>Molitva votes: <h id="molitva"></h></li>
@@ -22,7 +91,7 @@
         <li>Fairytail votes: <h id="fairytail"></h></li>
         <li>Rise Like a Phoenix votes: <h id="rise_phoenix"></h></li>
         <li>Cha Cha Cha votes: <h id="cha_cha_cha"></h></li>
-    </ul>
+    </ul-->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="/script/get_votes.js"></script>
