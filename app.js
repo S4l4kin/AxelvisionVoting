@@ -57,7 +57,7 @@ app.post("/vote", async (c) => {
         }
     })
 
-    votes["waterloo"] = Math.min(votes["waterloo"],maxV-1);
+    votes["waterloo"] = Math.min(0,Math.min(votes["waterloo"],maxV-1));
 
     return c.text("Thank you for voting!");
 });
