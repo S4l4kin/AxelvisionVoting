@@ -44,7 +44,6 @@ app.post("/vote", async (c) => {
     const body = await c.req.json();
     
     Object.entries(body).forEach(([k,v]) => {
-        console.log(k,v);
         votes[k] += v;
     })
 
@@ -89,10 +88,18 @@ app.on("RESET", "/", (c) => {
         "cha_cha_cha": 0};
 });
 
-//To make it possible to read external scripts
+//To make it possible to read external scripts & images
 app.get("/script/:path{.+\\.js$}", async (c) => {
     const text = await Deno.readTextFile("./script/"+c.req.param("path"));
+    
     return c.text(text);
-})
+});
+app.get("/images/:path{.+\\.png$}", async (c) => {
+    const img = await Deno.readFile("./images/"+c.req.param("path"));
+    const head = new Headers();
+    head.set('content-type', 'image/png');
+    const response = new Response(img, { headers: head, status: 200 });
+    return response;
+});
 
 export default app;
