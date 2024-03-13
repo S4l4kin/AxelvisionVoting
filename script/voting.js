@@ -1,71 +1,71 @@
 /* JavaScript file for voting.eta */
 
-// Variables for selected elements
-var selected_el = {
-    "waterloo": 0,
-    "10_years": 0,
-    "molitva": 0,
-    "lautar": 0,
-    "dancing_lasha": 0,
-    "fairytail": 0,
-    "rise_phoenix": 0,
-    "cha_cha_cha": 0
-};
+var select_ids = ["choice_1", "choice_2", "choice_3", "choice_4", 
+        "choice_5", "choice_6", "choice_7", "choice_8"];
 
+var vote_points = [12, 9, 7, 5, 4, 3, 2, 1];
 
-// TODO: Create the voting select elements --> does not work at the moment...
-function createSelect(id){
-    var select = document.getElementById(id);
+function enableDisableOptions(){
+    // Variables for selected elements
+    var selected_el = {
+        "waterloo": 0,
+        "10_years": 0,
+        "molitva": 0,
+        "lautar": 0,
+        "dancing_lasha": 0,
+        "fairytail": 0,
+        "rise_phoenix": 0,
+        "cha_cha_cha": 0,
+        "undecided": 0
+    };
 
-    // remove all child elements from the select
-    while (select.firstChild) {
-        select.removeChild(select.lastChild);
-    }
-
-    // create the options for the select
-    var option = document.createElement("option");
-    option.setAttribute("value", "undecided");
-    option.innerHTML = "undecided";
-    // select.appendChild(option);
-
-    var images = ["sweden.png", "iceland.png", "serbia.jpg", "moldova.png",
-        "ukraine.png", "norway.png", "austria.png", "finland.png"];
-    var option_values = ["waterloo", "10_years", "molitva", "lautar", 
-        "dancing_lasha", "fairytail", "rise_phoenix", "cha_cha_cha"];
-    var option_texts = ["Waterloo", "10 Years", "Molitva", "Lautar",
-        "Dancing Lasha Tumbai", "Fairytale", "Rise Like a Phoenix", "Cha Cha Cha"];
-
-    for(var i = 0; i < option_values.length; i++){
-        if (selected_el[option_values[i]] == 0){
-            console.log(option_values[i])
-            var option = document.createElement("option");
-            option.value = option_values[i];
-            option.text = option_texts[i];
-            // option.setAttribute("value", option_values[i]);
-            // option.innerHTML = option_texts[i];
-            option.setAttribute("data-img-src", "images/"+ images[i]);
-            select.appendChild(option);
-        } else if (selected_el[option_values[i]] == i + 1){
-            var option = document.createElement("option");
-            option.setAttribute("value", option_values[i]);
-            option.innerHTML = option_texts[i];
-            option.setAttribute("data-icon", "images/"+ images[i]);
-            option.setAttribute("selected", "selected");
-            select.appendChild(option);
-            select.value = option_values[i];
+    for(var i = 0; i < select_ids.length; i++){
+        var select = document.getElementById(select_ids[i]);
+        var value = select.options[select.selectedIndex].value;
+        selected_el[value] += 1;
+        // enable every option
+        for(var j = 0; j < select.options.length; j++){
+            select.options[j].disabled = false;
         }
     }
-    return select;
+
+    for(var i = 0; i < select_ids.length; i++){
+        var select = document.getElementById(select_ids[i]);
+        for (var key in selected_el){
+            if(selected_el[key] > 0 && key != "undecided"){
+                for(var j = 0; j < select.options.length; j++){
+                    if(select.options[j].value == key && select.options[select.selectedIndex].value != key){
+                        select.options[j].disabled = true;
+                    }
+                }
+            }
+        }
+        M.FormSelect.init(select);
+    }
 }
 
-// Create all the select elements
-function createAllSelects(){
-    createSelect("choice_1");
-    createSelect("choice_2");
-    createSelect("choice_3");
-    createSelect("choice_4");
-    createSelect("choice_5");
-    createSelect("choice_6");
-    createSelect("choice_7");
-    createSelect("choice_8");
+
+function updateSelects(){
+    // get all values from every select element
+    for(var i = 0; i < select_ids.length; i++){
+        var select = document.getElementById(select_ids[i]);
+        select.addEventListener("change", function(){
+            enableDisableOptions();
+        });
+    }
 }
+
+function send_votes(){
+    var votes = {};
+    for(var i = 0; i < select_ids.length; i++){
+        var select = document.getElementById(select_ids[i]);
+        var selected_val = select.options[select.selectedIndex].value;
+        var points = vote_points[i];
+        if (selected_val != "undecided"){
+            votes[selected_val] = points;
+        }
+        
+    }
+    send(votes);
+}
+
