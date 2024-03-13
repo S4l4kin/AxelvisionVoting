@@ -52,13 +52,25 @@ app.post("/vote", async (c) => {
 });
 
 
-app.get("/", (c) => c.html(eta.render("scores.eta", { votes: votes, count: get_all_votes() }))); //The main score view
-app.get("/voting", (c) => c.html(eta.render("voting.eta")));                                     //The voting view
+async function readPage(url) {
+    var text = "hello";
+    await Deno.readTextFile(url)
+    .then((body) => {
+        text = body;
+    });
+    return text;
+}
+
+app.get("/", async (c) => c.html(await readPage("./scores.html"))); //The main score view
+app.get("/voting", async (c) => c.html(await readPage("./voting.html")));                                     //The voting view
+
 app.get("/votes", (c) => {                                                                 //Used to send how many votes each song has
     var dir = {...votes};
     dir["count"] = get_all_votes();
     return c.json(dir);
 });
+
+
 
 app.put("/", async (c) => {
     const socket = await c.upgrade();
@@ -79,7 +91,6 @@ app.on("RESET", "/", (c) => {
 
 //To make it possible to read external scripts
 app.get("/script/:path{.+\\.js$}", async (c) => {
-    console.log("testata: " + c.req.param("path"));
     const text = await Deno.readTextFile("./script/"+c.req.param("path"));
     return c.text(text);
 })
