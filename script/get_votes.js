@@ -7,6 +7,14 @@ await fetch(url)                                //Takes the response, changes it
 
 Object.entries(votes).forEach(([k,v]) => {      //Loop through all votes and change the label to match the value
     document.getElementById(k).innerHTML = v.value;
+
+    document.getElementById("p_"+k).innerHTML = v.position;
+    if (v.position <=3){
+        document.getElementById("p_"+k).style.color = "red";
+    } else {
+        document.getElementById("p_"+k).style.color = "black";
+    }
+
 });
 
 };
