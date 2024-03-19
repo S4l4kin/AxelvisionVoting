@@ -184,6 +184,12 @@
     <script src= "script/send_votes.js"></script>
     <script src= "script/voting.js"></script>
     <script>
+        if (navigator.userAgent.includes("Safari")) {
+          for (var i = 1; i < 9; i++) {
+            document.getElementById("choice_" + i).className = "browser-default";
+          }
+        } 
+
         //Dropdown
         $('select').formSelect();
 
