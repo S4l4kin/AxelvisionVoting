@@ -24,13 +24,23 @@
 
 async function send(votes){
     const url = window.location.search + "/vote";
+
+    var message = {"votes": votes };
+
+    await fetch('https://api.ipify.org?format=json')
+    .then(response => response.json())
+    .then(data => {
+        console.log(data.ip)
+        message["ip"] = data.ip;
+    });
+
     await fetch(url,{
         method: 'POST',
         headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
         },
-        body: JSON.stringify(votes)
+        body: JSON.stringify(message)
     }).then(body => body.text())
     .then(data => {
         //console.log(data)

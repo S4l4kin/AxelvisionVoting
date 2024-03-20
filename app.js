@@ -12,8 +12,7 @@ const eta = new Eta({ views: `${Deno.cwd()}/templates/` });
 
 const app = new Hono();
 
-var id = (Math.random()*4294967296)>>>0;
-
+var voted = [];
 function compareScore(a, b) {
     return b.value - a.value;
 }
@@ -38,18 +37,18 @@ function get_all_votes () {
 
 app.post("/vote", async (c) => {
 
-    const votedCookie = getCookie(c,"voted");
-    if (votedCookie == id) {                          //Each device can only vote once
-        console.log("please vote only once");
-        return c.text("You can only vote once");
-    }
-    setCookie(c, 'voted', id);
-
-
+    
+    
     const body = await c.req.json();
+    //New voting detection
+    
+    if(voted.includes(body["ip"])){
+        return c.text("You can only vote once!");
+    }
+    voted.push(body["ip"]);
     var max = "";
     var maxV = 0;
-    Object.entries(body).forEach(([k,v]) => {
+    Object.entries(body["votes"]).forEach(([k,v]) => {
         votes[k] += v;
         if(votes[k] >= maxV && k != "waterloo"){
             maxV = votes[k];
@@ -94,7 +93,7 @@ app.get("/votes", (c) => {                                                      
 });
 
 app.on("RESET", "/", (c) => {
-    id = (Math.random()*4294967296)>>>0;
+    voting = [];
     votes = {"waterloo": 0,
         "10_years": 0,
         "molitva": 0,
