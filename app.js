@@ -93,7 +93,7 @@ app.get("/votes", (c) => {                                                      
 });
 
 app.on("RESET", "/", (c) => {
-    voting = [];
+    voted = [];
     votes = {"waterloo": 0,
         "10_years": 0,
         "molitva": 0,
@@ -102,6 +102,7 @@ app.on("RESET", "/", (c) => {
         "fairytail": 0,
         "rise_phoenix": 0,
         "cha_cha_cha": 0};
+    return c.text("Voting reset");
 });
 
 //To make it possible to read external scripts & images
