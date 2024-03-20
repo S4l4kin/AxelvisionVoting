@@ -5,12 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-    
+    <style>
+      .parallax-container {
+        height: 110px;
+      }
+      .parallax {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: 50% 50%;
+      }
+    </style>
   </head>
   <body>
+
+    <div class="parallax-container">
+      <div class="parallax"><img src="images/moldova.png"></div>
+    </div>
+
     <div class="container" style="width:90%">
       <div class="row">
-        <h1>Results</h1>
+        <!--h5>Results</h5-->
       </div>
       <div class="row">
         <h>Number of total votes: <h id="count"></h></h>
@@ -30,56 +44,56 @@
           <tbody>
             <tr>
               <td><p id="p_waterloo"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/sweden.png" alt="Sweden"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/sweden.png" alt="Sweden"></td>
               <td><p>Waterloo</p></td>
               <td><p>Kalevalina & Lucia</p></td>
               <td><p id="waterloo"></p></td>
             </tr>
             <tr>
               <td><p id="p_10_years"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/iceland.png" alt="Iceland"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/iceland.png" alt="Iceland"></td>
               <td><p>10 Years</p></td>
               <td><p>Freddy</p></td>
               <td><p id="10_years"></p></td>
             </tr>
             <tr>
               <td><p id="p_molitva"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/serbia.png" alt="Serbia"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/serbia.png" alt="Serbia"></td>
               <td><p>Molitva</p></td>
               <td><p>Dancing Queen</p></td>
               <td><p id="molitva"></p></td>
             </tr>
             <tr>
               <td><p id="p_lautar"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/moldova.png" alt="Moldova"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/moldova.png" alt="Moldova"></td>
               <td><p>Lautar</p></td>
               <td><p>Verdandi</p></td>
               <td><p id="lautar"></p></td>
             </tr>
             <tr>
               <td><p id="p_dancing_lasha"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/ukraine.png" alt="Ukraine"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/ukraine.png" alt="Ukraine"></td>
               <td><p>Dancing Lasha Tumbai</p></td>
               <td><p>Mörlyn</p></td>
               <td><p id="dancing_lasha"></p></td>
             </tr>
             <tr>
               <td><p id="p_fairytail"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/norway.png" alt="Norway"></td>
-              <td><p>Fairytail</p></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/norway.png" alt="Norway"></td>
+              <td><p>Fairytale</p></td>
               <td><p>Lejdi Gaga</p></td>
               <td><p id="fairytail"></p></td>
             </tr>
             <tr>
               <td><p id="p_rise_phoenix"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/austria.png" alt="Austria"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/austria.png" alt="Austria"></td>
               <td><p>Rise Like a Phoenix</p></td>
               <td><p>pHabbe</p></td>
               <td><p id="rise_phoenix"></p></td>
             </tr>
             <tr>
               <td><p id="p_cha_cha_cha"></p></td>
-              <td style="width: 100px;"><img class="responsive-img" src="images/finland.png" alt="Finland"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/finland.png" alt="Finland"></td>
               <td><p>Cha Cha Cha</p></td>
               <td><p>[Chà Chà]</p></td>
               <td><p id="cha_cha_cha"></p></td>
@@ -93,6 +107,9 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
     <script src="/script/get_votes.js"></script>
-
+    <script>
+      //Parallax
+      $('.parallax').parallax();
+    </script>
   </body>
 </html>
