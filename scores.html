@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <style>
       .parallax-container {
-        height: 110px;
+        height: 90px;
       }
       .parallax {
         background-attachment: fixed;
@@ -18,6 +18,24 @@
       .parallax img {
         height: 100%
       }
+
+      #results img{
+           max-width: 90%;
+          /*max-height: 40px;*/
+          display: block;
+      }
+
+      .striped tr { 
+        line-height: 19px; 
+        white-space: nowrap;
+      }
+
+      table td {
+        padding: 7px 0;
+          
+        /*border-collapse: collapse;*/
+      }
+
     </style>
   </head>
   <body>
@@ -32,9 +50,9 @@
       </div>
       <div class="row">
         <h>Number of total votes: <h id="count"></h></h>
-      </div>
-      <div class="row">
-        <table class="striped">
+      <!--/div>
+      <div class="row"-->
+        <table class="striped" id="results">
           <thead>
             <tr>
                 <th>Position</th>
@@ -48,7 +66,7 @@
           <tbody>
             <tr>
               <td><p id="p_waterloo"></p></td>
-              <td style="width: 80px;"><img class="responsive-img" src="images/sweden.png" alt="Sweden"></td>
+              <td style="width: 80px;"><img class="responsive-img" src="images/sweden.png" alt="Sweden" height="10"></td>
               <td><p>Waterloo</p></td>
               <td><p>Kalevalina & Lucia</p></td>
               <td><p id="waterloo"></p></td>
