@@ -92,7 +92,7 @@ app.get("/votes", (c) => {                                                      
     return c.json(dir);
 });
 
-app.on("RESET", "/", (c) => {
+app.get("/reset", (c) => {
     voted = [];
     votes = {"waterloo": 0,
         "10_years": 0,
